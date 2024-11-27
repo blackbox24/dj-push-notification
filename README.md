@@ -9,3 +9,6 @@
 [X] create views for template
 [X] create urls for view and add it to rootURLconf
 [X] create models for `notification` app
+[X] define channels in setting file
+[x] Create Channel layers to handle our websockets by storin info
+[x] install `uvicorn[standard]` to handle async request using asgi
