@@ -4,7 +4,7 @@ from notification.consumers import NotificationConsumer
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("message/",include("notification.urls")),
+    path("",include("notification.urls")),
 ]
 
 

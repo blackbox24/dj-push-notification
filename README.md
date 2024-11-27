@@ -20,3 +20,4 @@
 [X] modify admin template file for add_view
 [X] add channel layer to send notifications
 [X] add our custom url in `admin.py` for send message
+[X] create a client side to handle the websockets

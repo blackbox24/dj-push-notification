@@ -24,7 +24,7 @@ class NotifiationAdmin(admin.ModelAdmin):
                 
                 channel_layer = get_channel_layer()
                 async_to_sync(channel_layer.group_send)(
-                    "notifications",
+                    "notification",
                     # define wat we want to do
                     {
                         "type":"send_notification", # use send_notification func
@@ -40,7 +40,7 @@ class NotifiationAdmin(admin.ModelAdmin):
         return super().add_view(request,form_url,extra_context=context)
     
     def get_urls(self):
-        urls = super().get_urls
+        urls = super().get_urls()
         custom_url = [
             path("send-notification/",self.admin_site.admin_view(self.add_view),name="send-notification")
         ]
