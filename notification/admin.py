@@ -1,5 +1,8 @@
 from django.contrib import admin
+from django.http import HttpResponseRedirect
 from .models import Notification
+from channels.layers import get_channel_layer 
+from asgiref.sync import async_to_sync # make sync calls
 
 # Register your models here.
 from django import forms
@@ -17,7 +20,18 @@ class NotifiationAdmin(admin.ModelAdmin):
             if form.is_valid():
                 message = form.cleaned_data["message"]
                 notification = Notification.objects.create(message=message)
+                
+                channel_layer = get_channel_layer()
+                async_to_sync(channel_layer.group_send)(
+                    "notifications",
+                    # define wat we want to do
+                    {
+                        "type":"send_notification", # use send_notification func
+                        "message":message   # send message
+                    }
+                )
 
+                return HttpResponseRedirect("../{}/".format(notification.pk))
         else:
             form = SendNotificationForm()
         context = self.get_changeform_initial_data(request)
