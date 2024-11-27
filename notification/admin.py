@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.http import HttpResponseRedirect
+from django.urls import path
 from .models import Notification
 from channels.layers import get_channel_layer 
 from asgiref.sync import async_to_sync # make sync calls
@@ -37,3 +38,10 @@ class NotifiationAdmin(admin.ModelAdmin):
         context = self.get_changeform_initial_data(request)
         context["form"] = form
         return super().add_view(request,form_url,extra_context=context)
+    
+    def get_urls(self):
+        urls = super().get_urls
+        custom_url = [
+            path("send-notification/",self.admin_site.admin_view(self.add_view),name="send-notification")
+        ]
+        return custom_url + urls

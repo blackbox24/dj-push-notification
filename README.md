@@ -18,3 +18,5 @@
 [X] create function to handle accepting and disconnecting and also pushing notification users 
 [X] add a context and template
 [X] modify admin template file for add_view
+[X] add channel layer to send notifications
+[X] add our custom url in `admin.py` for send message
