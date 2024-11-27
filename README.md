@@ -15,3 +15,5 @@
 [X] change directory to the rootconfig directory and type `uvicorn config.asgi:application --port 8000 --workers 4 --log-level debug --reload`
 [X] create urls to handle websocket connect and requests
 [X] create consumers to act as views and build it
+[X] create function to handle accepting and disconnecting and also pushing notification users 
+[X] add a context and template
