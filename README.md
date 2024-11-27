@@ -8,3 +8,4 @@
 [X] Create a templates directory in `notification` app with `notification_page.html` inside it
 [X] create views for template
 [X] create urls for view and add it to rootURLconf
+[X] create models for `notification` app
